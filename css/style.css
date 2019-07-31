@@ -23,19 +23,24 @@ h3,
 h4 {
   font-family: "Roboto", sans-serif;
 }
+main,
 header {
   margin: 2em auto;
   width: 80%;
-  background-image: url("../images/header.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 25px;
-  height: 80vh;
+  height: 90vh;
+}
+header {
+  background-image: url("../images/header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
   padding-right: 4em;
   align-items: space-between;
+  overflow: hidden;
 }
 nav {
   display: flex;
@@ -55,10 +60,15 @@ nav a:hover {
   font-weight: bold;
   margin: 1em;
 }
-.controls {
-  position: relative;
-  top: -2em;
-  left: calc(40% + 20px);
+#control-a,
+#control-c,
+#control-s {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 1em;
+  width: 90%;
 }
 .banner {
   width: 100%;
@@ -68,11 +78,20 @@ nav a:hover {
   align-items: flex-end;
 }
 .banner h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   font-family: "Exo 2", sans-serif;
 }
-.banner p {
-  font-family: "Roboto", "Confortaa", sans-serif;
+.banner p,
+.para {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2em;
+}
+.para {
+  padding: 0.5em 2em;
+}
+.detail {
+  width: 70%;
+  margin: 0 auto;
 }
 .thick-line {
   display: block;
@@ -92,16 +111,29 @@ nav a:hover {
   align-items: center;
 }
 .buttons {
-  justify-content: flex-end;
   flex-grow: 2;
+}
+.right {
+  justify-content: flex-end;
+}
+.left {
+  justify-content: flex-start;
+}
+.center {
+  justify-content: center;
 }
 .btn {
   border-radius: 15px;
-  padding: 2em;
+  padding: 1em 2em;
   color: white;
   font-family: "Roboto", sans-serif;
   margin: 2em;
+  width: 125px;
+  text-align: center;
   cursor: pointer;
+}
+.btn span:hover {
+  border: 1px solid white;
 }
 .border-purple {
   border: 1px solid purple;
@@ -121,11 +153,8 @@ nav a:hover {
 }
 .container {
   border-radius: 15px;
-  position: absolute;
-  bottom: calc(30vh + 2em);
-  width: 40%;
-  left: calc(10% + 100px + 2em);
-  height: 0;
+  width: 100%;
+  height: 100%;
   display: block;
   z-index: 1000;
   overflow: visible;
@@ -140,17 +169,24 @@ nav a:hover {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 .no-left {
   margin-left: -2em;
 }
 .social i {
   padding: 0.5em;
+  color: white;
 }
 .hidden {
   display: none;
 }
-
+.pull-up {
+  animation: pullUp 0.5s linear forwards;
+}
+.pull-down {
+  animation: pullDown 0.5s linear forwards;
+}
 .slide-right {
   animation: slideRight 0.5s linear forwards;
 }
@@ -194,20 +230,56 @@ nav a:hover {
     width: 0px;
   }
   50% {
-    width: 50px;
+    width: 25px;
   }
   100% {
-    width: 100px;
+    width: 50px;
   }
 }
 @keyframes slideLeft {
   0% {
-    width: 100px;
+    width: 50px;
   }
   50% {
-    width: 50px;
+    width: 25px;
   }
   100% {
     width: 0px;
+  }
+}
+
+@keyframes pullUp {
+  0% {
+    position: absolute;
+    top: 100vh;
+    left: 10%;
+  }
+  50% {
+    position: absolute;
+    top: 50vh;
+    left: 10%;
+  }
+  100% {
+    position: absolute;
+    top: 1vh;
+    left: 10%;
+  }
+}
+@keyframes pullDown {
+  0% {
+    position: absolute;
+    top: 1vh;
+    left: 10%;
+  }
+
+  50% {
+    position: absolute;
+    top: 50vh;
+    left: 10%;
+  }
+  100% {
+    position: absolute;
+    top: 100vh;
+    left: 10%;
   }
 }
