@@ -4,17 +4,17 @@ const btnHomeA = document.getElementById("btn-home-a");
 const btnHomeC = document.getElementById("btn-home-c");
 const btnHomeS = document.getElementById("btn-home-s");
 
-const btnAboutA = document.getElementById("btn-about-a");
+const btnAboutH = document.getElementById("btn-about-h");
 const btnAboutC = document.getElementById("btn-about-c");
 const btnAboutS = document.getElementById("btn-about-s");
 
 const btnShowA = document.getElementById("btn-show-a");
-const btnShowsC = document.getElementById("btn-show-c");
-const btnShowS = document.getElementById("btn-show-s");
+const btnShowC = document.getElementById("btn-show-c");
+const btnShowH = document.getElementById("btn-show-h");
 
 const btnContactA = document.getElementById("btn-contact-a");
-const btnContactC = document.getElementById("btn-contact-c");
-const btnContactS = document.getElementById("btn-contact-c");
+const btnContactH = document.getElementById("btn-contact-h");
+const btnContactS = document.getElementById("btn-contact-s");
 
 const contactDetail = document.getElementById("contact");
 const controls = [
@@ -24,6 +24,21 @@ const controls = [
 ];
 const btnHome = document.getElementById("btn-home");
 const header = document.getElementsByTagName("header")[0];
+
+//social slider
+
+if (social) {
+  social.addEventListener("mouseover", event => {
+    social.classList.remove("slide-left");
+    social.classList.add("slide-right");
+  });
+}
+if (social) {
+  social.addEventListener("mouseout", event => {
+    social.classList.remove("slide-right");
+    social.classList.add("slide-left");
+  });
+}
 
 //close and display home page
 const closeMe = () => {
@@ -52,12 +67,10 @@ const showSection = id => {
       detail.classList.remove("hidden");
       detail.classList.remove("pull-down");
       detail.classList.add("pull-up");
-      // setTimeout(() => {
-      //   // header.classList.remove("hidden");
-      //   detail.classList.add("hidden");
-      // }, 500);
 
       header.classList.add("hidden");
+    } else {
+      detail.classList.add("hidden");
     }
   }
 };
@@ -67,97 +80,60 @@ controls.map(control => {
   if (control) control.addEventListener("click", closeMe);
 });
 
-//navigation buttons
+//navigation on home page buttons
 
 if (btnHomeA)
   btnHomeA.addEventListener("click", () => {
     showSection("about");
   });
 
-  if (btnHomeC)
+if (btnHomeC)
   btnHomeC.addEventListener("click", () => {
     showSection("contact");
   });
 
-  if (btnHomeS)
+if (btnHomeS)
   btnHomeS.addEventListener("click", () => {
     showSection("showcase");
   });
 
-btnHomes.map(home => {
-  if (home) {
-    home.addEventListener("click", e => {
-      e.preventDefault();
-      console.log(home.id);
-      if (home.id.substr(home.id.length - 3, 2) === "-a") showSection("about");
-      else {
-        if (home.id.substr(home.id.length - 3, 2) === "-s") showSection("show");
-        else {
-          if (home.id.substr(home.id.length - 3, 2) === "-c")
-            showSection("contact");
-        }
-      }
-    });
-  }
-});
+//navigation on about page buttons
 
-if (social) {
-  social.addEventListener("mouseover", event => {
-    social.classList.remove("slide-left");
-    social.classList.add("slide-right");
+if (btnAboutS)
+  btnAboutS.addEventListener("click", () => {
+    showSection("showcase");
   });
-}
-if (social) {
-  social.addEventListener("mouseout", event => {
-    social.classList.remove("slide-right");
-    social.classList.add("slide-left");
+
+if (btnAboutC)
+  btnAboutC.addEventListener("click", () => {
+    showSection("contact");
   });
-}
 
-// // Event listener to big buttons
-// if (btnAbout) {
-//   btnAbout.addEventListener("mouseover", () => {
-//     btnAbout.classList.remove("border-purple");
-//     btnAbout.classList.add("border-white");
-//   });
-//   btnAbout.addEventListener("mouseout", () => {
-//     btnAbout.classList.remove("border-white");
-//     btnAbout.classList.add("border-purple");
-//   });
+if (btnAboutH) btnAboutH.addEventListener("click", closeMe);
+//navigation on showcase page buttons
 
-//   btnAbout.addEventListener("click", e => {
-//     const about = document.getElementById("about");
-//     about.classList.remove("hidden");
-//     // container.classList.remove("pull-up");
-//     header.classList.add("hidden");
-//     about.classList.add("pull-up");
-//   });
-// }
+if (btnShowA)
+  btnShowA.addEventListener("click", () => {
+    showSection("about");
+  });
 
-// if (btnShow) {
-//   btnShow.addEventListener("mouseover", () => {
-//     btnShow.classList.remove("border-purple");
-//     btnShow.classList.add("border-white");
-//   });
-//   btnShow.addEventListener("mouseout", () => {
-//     btnShow.classList.remove("border-white");
-//     btnShow.classList.add("border-purple");
-//   });
+if (btnShowC)
+  btnShowC.addEventListener("click", () => {
+    showSection("contact");
+  });
 
-//   btnShow.addEventListener("click", showSection("showcase"));
-// }
+if (btnShowH) btnShowH.addEventListener("click", closeMe);
 
-// if (btnContact) {
-//   btnContact.addEventListener("mouseover", () => {
-//     btnContact.classList.remove("border-purple");
-//     btnContact.classList.add("border-white");
-//   });
-//   btnContact.addEventListener("mouseout", () => {
-//     btnContact.classList.remove("border-white");
-//     btnContact.classList.add("border-purple");
-//   });
+//navigation on showcase page buttons
 
-//   btnContact.addEventListener("click", () => {
-//     showSection("contact");
-//   });
-// }
+if (btnContactA)
+  btnContactA.addEventListener("click", () => {
+    showSection("about");
+  });
+
+if (btnContactS)
+  btnContactS.addEventListener("click", () => {
+    showSection("showcase");
+  });
+
+if (btnContactH) btnContactH.addEventListener("click", closeMe);

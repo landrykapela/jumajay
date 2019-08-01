@@ -113,6 +113,9 @@ nav a:hover {
 .buttons {
   flex-grow: 2;
 }
+.buttons span:hover {
+  border: 1px solid white;
+}
 .right {
   justify-content: flex-end;
 }
